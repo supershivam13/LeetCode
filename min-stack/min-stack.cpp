@@ -1,32 +1,59 @@
+int min_ele;
+
 class MinStack {
 
 private:
-    stack<int> s;
-    // supporting stack
-    stack<int> ss;
+    stack<signed long long> s;
     
 public:
     
     void push(int val) {
-        s.push(val);
         
-        if(ss.size()==0 or ss.top()>=val)
-            ss.push(val);
+        if(s.size()==0){
+            s.push(val);
+            min_ele=val;
+        }
+        else{
+            if(val>=min_ele)
+                s.push(val);
+            else{
+                s.push((2ll*val)-min_ele);
+                min_ele=val;
+            }
+        }
+        
     }
     
     void pop() {
         
-        if(ss.top()==s.top())
-            ss.pop();
-        
-        s.pop();
+        if(s.size()==0)
+            return;
+        else{
+            if(s.top()>=min_ele)
+                s.pop();
+            else{
+                min_ele=(2ll*min_ele)-s.top();
+                s.pop();
+            } 
+        }
     }
     
     int top() {
-        return s.top();
+        
+        if(s.size()==0)
+            return -1;
+        
+        if(s.top()>=min_ele)
+            return s.top();
+        else
+            return min_ele;
     }
     
     int getMin() {
-        return ss.top();
+        
+        if(s.size()==0)
+            return -1;
+        
+        return min_ele;
     }
 };
