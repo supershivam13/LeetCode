@@ -1,25 +1,40 @@
 class Solution {
 public:
-    int peakIndexInMountainArray(vector<int> A) {
-    
-        int n=A.size();
-        int l = 0, r = A.size() - 1, mid;
-
-        // Binary Search - O( logN )
-        while (l <= r) {
-
-            mid = l + ((r-l) / 2);
+    int peakIndexInMountainArray(vector<int> a) {
+        
+        int n=a.size();
+        int start = 0;
+        int end = n-1;
+        int mid;
+        
+        while(start<=end){
+        
+            mid= start + ((end-start)/2);
             
-            if(A[mid]>A[(mid+1)%n] and A[mid]>A[(mid-1+n)%n])
-                return mid;
-
-            if (A[mid] < A[mid + 1])
-                l = mid + 1;
-            else
-                r = mid - 1;
+            if(mid>0 and mid<n-1){
+                if(a[mid]>a[mid+1] and a[mid]>a[mid-1])
+                    return mid;
+                
+                else if(a[mid]<a[mid+1])
+                    start = mid+1;
+                else
+                    end = mid -1;
+            }
+            else if(mid==0){
+                if(a[0]>a[1])
+                    return 0;
+                else
+                    return 1;
+            }
+            else{
+                if(a[n-1]>a[n-2])
+                    return n-1;
+                else
+                    return n-2;
+            }
         }
-
-        return l;
+        
+        return -1;
     }
 
 };
