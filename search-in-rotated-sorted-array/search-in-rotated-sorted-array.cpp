@@ -5,6 +5,12 @@
 // improve the complexity using binary search }
 
 
+// Property of Binary Search :-
+// When a target element is not present in the array, then at the end of the loop, 'start' index points to the
+// ceil element of the target and 'end' index points to the floor value of the target.
+
+
+
 // Graph of the Rotated Sorted Array
 
 //                B /.
@@ -22,6 +28,10 @@
 //
 //
 
+// IDEA TO SOLVE :-
+
+// Find the index of the maximum(pivot) element and then do binary on either of the two parts of the array
+// { i.e either on AB part or on CD part }
 
 
 class Solution {
@@ -29,14 +39,14 @@ public:
 
     // Function to return the index of the maximum(pivot) element
     int find_pivot(vector<int>& nums, int left, int right)
-    {   
+    {
         // if the array on which function is called is strictly increasing
         // (it don't has the BC part of the graph )
         if (nums[left] < nums[right])
             return right;
 
         int mid;
-        
+
         // Binary Search
         while (left <= right)
         {
@@ -58,24 +68,25 @@ public:
 
         return mid;
     }
-    
-    int binary_search(vector<int>& nums,int left,int right,int target)
+
+    // Normal Binary Search function to return the index of the target element. If not found, return -1
+    int binary_search(vector<int>& nums, int left, int right, int target)
     {
         int mid;
-        
-        while(left<=right)
+
+        while (left <= right)
         {
-            mid = left + ((right-left)/2);
-            
-            if(nums[mid]==target)
+            mid = left + ((right - left) / 2);
+
+            if (nums[mid] == target)
                 return mid;
-            
-            else if(nums[mid]>target)
-                right = mid-1;
+
+            else if (nums[mid] > target)
+                right = mid - 1;
             else
-                left = mid+1;
+                left = mid + 1;
         }
-        
+
         return -1;
     }
 
@@ -85,21 +96,22 @@ public:
 
         int n = a.size();
 
-        if (n == 1){
-            if(target==a[0])
+        if (n == 1) {
+            if (target == a[0])
                 return 0;
-            else 
+            else
                 return -1;
         }
-            
+
         // Finding the index of the maximum element of the array
         int pivot = find_pivot(a, 0, n - 1);
-        cout<<pivot;
-        
-        if(target>a[n-1])
-            return binary_search(a,0,pivot,target);
+
+
+        // if target > a[n-1], then binary search on the AB part, else on CD part
+        if (target > a[n - 1])
+            return binary_search(a, 0, pivot, target);
         else
-            return binary_search(a,(pivot+1)%n,n-1,target);
+            return binary_search(a, (pivot + 1) % n, n - 1, target);
 
     }
 };
