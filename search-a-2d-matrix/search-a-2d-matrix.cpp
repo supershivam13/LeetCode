@@ -5,18 +5,22 @@ public:
         int m=a.size();
         int n=a[0].size();
         
-        int i=0;
-        int j=n-1;
+        int start=0;
+        int end=(m*n)-1;
+        int mid;
         
-        while(i>=0 and i<m and j>=0 and j<n){
-        
-            if(a[i][j]==x)
+        while(start<=end){
+            
+            mid = start + ((end-start)/2);
+            int mid_val = a[mid/n][mid%n];
+            
+            if(mid_val==x)
                 return true;
             
-            else if(a[i][j]>x)
-                j--;
+            else if(mid_val>x)
+                end=mid-1;
             else 
-                i++;
+                start=mid+1;
         }
         
         return false;        
