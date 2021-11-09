@@ -4,6 +4,7 @@ bool comp(vector<int> &a,vector<int> &b)
         return a[0]<b[0];
     return a[1]<b[1];
 }
+
 class Solution {
 public:
     int findMinArrowShots(vector<vector<int>>& points) {
@@ -14,9 +15,7 @@ public:
         for(int i=1;i<points.size();i++)
         {
             if(points[i][0]<=ep)
-            {
                  continue;
-            }
             else
             {
                 c++;
