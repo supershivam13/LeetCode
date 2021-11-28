@@ -3,7 +3,6 @@ public:
     int findPeakElement(vector<int>& a) {
         
         int n=a.size();
-        
         if(n==1)
             return 0;
         
@@ -13,7 +12,7 @@ public:
         
         while(start<=end){
         
-            mid= start + ((end-start)/2);
+            mid = start + ((end-start)/2);
             
             if(mid>0 and mid<n-1){
                 if(a[mid]>a[mid+1] and a[mid]>a[mid-1])
@@ -39,6 +38,5 @@ public:
         }
         
         return -1;
-        
     }
 };
