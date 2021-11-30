@@ -2,8 +2,7 @@ class MyHashMap {
     vector<list<pair<int,int>>> map;
     int m_size = 10000;
 
-public:
-    
+public:    
     MyHashMap() {
         map.resize(m_size);
     }
@@ -16,18 +15,17 @@ public:
                 return;
             }
         }
-        list.emplace_back(key, value);
+        list.push_back({key, value});
     }
     
     int get(int key) {
         const auto &list = map[key % m_size];
-        if (list.empty()) {
+        if (list.empty())
             return -1;
-        }
+        
         for (const auto & val : list) {
-            if (val.first == key) {
+            if (val.first == key) 
                 return val.second;
-            }
         }
         return -1;
     }
@@ -36,7 +34,8 @@ public:
         auto& pairs = map[key%m_size];
         for(auto i=pairs.begin(); i!= pairs.end(); i++) {
             if(i->first==key) { 
-                pairs.erase(i); return; 
+                pairs.erase(i); 
+                return; 
             }
         }
     }
