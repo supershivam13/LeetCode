@@ -50,6 +50,7 @@ public:
             while (j < curr.size())
                 city += curr[j++];
 
+            // Creating a object 't' of class transaction
             transaction t(name, stoi(time), stoi(amount), city);
             input.push_back(t);
         }
@@ -71,21 +72,16 @@ public:
                 if (timediff <= 60)
                 {
                     if ((input[j].name == input[i].name) && (input[j].city != input[i].city))
-                    {
-                        valid[i] = false;
-                        valid[j] = false;
-                    }
+                        valid[i] = false, valid[j] = false;
                 }
             }
         }
 
-        //add invalid transactions to answer
+        //Insert Invalid transactions to final answer
         vector<string> ans;
         for (int i = 0; i < input.size(); i++)
-        {
             if (!valid[i])
                 ans.push_back(transactions[i]);
-        }
 
         return ans;
     }
