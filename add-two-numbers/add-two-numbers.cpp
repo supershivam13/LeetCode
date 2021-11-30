@@ -1,30 +1,30 @@
 class Solution {
 public:
     
-    // Reverse a Linked List
-    ListNode* reverseList(ListNode *head)
-    {
-        // { Prev Curr Temp }
-        ListNode* prev = NULL;
-        ListNode* curr = head;
-        ListNode* temp;
+//     // Reverse a Linked List
+//     ListNode* reverseList(ListNode *head)
+//     {
+//         // { Prev Curr Temp }
+//         ListNode* prev = NULL;
+//         ListNode* curr = head;
+//         ListNode* temp;
 
-        while (curr != NULL) {
+//         while (curr != NULL) {
 
-            // store next
-            temp = curr->next;
+//             // store next
+//             temp = curr->next;
 
-            // update current
-            curr->next = prev;
+//             // update current
+//             curr->next = prev;
 
-            prev = curr;
-            curr = temp;
-        }
+//             prev = curr;
+//             curr = temp;
+//         }
 
-        head = prev;
+//         head = prev;
 
-        return head;
-    }
+//         return head;
+//     }
     
     ListNode* addTwoNumbers(ListNode* first, ListNode* second) {
         
