@@ -1,8 +1,5 @@
-
-
 class Solution {
 public:
-    
     vector<vector<int>> ans;
     
     void subsets(vector<int> a,vector<int>out){
@@ -20,8 +17,7 @@ public:
         a.erase(a.begin());
         
         subsets(a,out1);
-        subsets(a,out2);
-        
+        subsets(a,out2); 
     }
     
     vector<vector<int>> subsets(vector<int>& a) {
@@ -30,7 +26,6 @@ public:
         
         subsets(a,out);
         
-        return ans;
-        
+        return ans; 
     }
 };
