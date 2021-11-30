@@ -2,35 +2,31 @@ class Solution {
 public:
     double myPow(double x, int n) {
         
-        bool f=false;
+        bool isNegativePower=false;
+        long long temp = n;
         
-        long long p=n;
-        if(p<0){
-            f=true;
-            p= p * (-1);
+        if(temp<0){
+            isNegativePower=true;
+            temp = abs(temp);
         }
 
-        double res=1;
+        double ans=1;
         
-        while(p){
+        while(temp){
             
-            if(p%2==1){
-                res = res*x;
-                p--;
+            if(temp%2==1){
+                ans = ans*x;
+                temp--;
             }
             else{
                 x=x*x;
-                p/=2;
-            }
-            // cout<<p<<" ";
+                temp/=2;
+            }   
         }
         
-        cout<<res;
-        
-        if(f)
-        return 1/res;
-        
-        return res;
-        
+        if(isNegativePower)
+            return 1/ans;
+        else
+            return ans;
     }
 };
