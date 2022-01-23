@@ -1,3 +1,6 @@
+// Time Complexity - O(N)
+// Space Complexity - O(N)
+
 class Solution {
 public:
     bool backspaceCompare(string s, string t) {
